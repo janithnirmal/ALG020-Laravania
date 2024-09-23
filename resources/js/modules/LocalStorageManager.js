@@ -5,7 +5,7 @@
  * storage objects (Shane objects) within primary and secondary mega objects.
  *
  * @class
- * @version 1.0
+ * @version 1.1
  * @author Prashan Silva (ShaNe)
  * @remarks
  * Author's Notes:
@@ -24,8 +24,8 @@ export default class LocalStorageManager {
      * @param {string} namespace - The namespace for local storage keys.
      * @param {Object} [options={}] - Optional settings for encryption and expiration.
      */
-    constructor(namespace, options = {}) {
-        this.namespace = namespace ? namespace + "_" : "";
+    constructor(options = {}) {
+        this.namespace = "";
         this.encryptionAPI = options.encryptionAPI || "/encrypt";
         this.decryptionAPI = options.decryptionAPI || "/decrypt";
 
@@ -52,7 +52,7 @@ export default class LocalStorageManager {
      * @returns {Object|null} - The loaded data or null if not found.
      */
     #loadFromStorage(megaObject) {
-        const data = localStorage.getItem(`${this.namespace}_${megaObject}`);
+        const data = localStorage.getItem(`${this.namespace}${megaObject}`);
         return data ? JSON.parse(data) : null;
     }
 
@@ -169,13 +169,20 @@ export default class LocalStorageManager {
      * @returns {Object} - The encrypted data.
      */
     async _encryptData(data) {
-        const response = await fetch(this.encryptionAPI, {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { "Content-Type": "application/json" },
-        });
-        const encrypted = await response.json();
-        return encrypted;
+        try {
+            const response = await RequestManager.post(
+                this.encryptionAPI,
+                data,
+                {
+                    showError: true,
+                    showLoading: true,
+                }
+            );
+            return response;
+        } catch (error) {
+            console.error("Error encrypting data:", error);
+            throw error;
+        }
     }
 
     /**
@@ -185,13 +192,20 @@ export default class LocalStorageManager {
      * @returns {Object} - The decrypted data.
      */
     async _decryptData(encryptedData) {
-        const response = await fetch(this.decryptionAPI, {
-            method: "POST",
-            body: JSON.stringify(encryptedData),
-            headers: { "Content-Type": "application/json" },
-        });
-        const decrypted = await response.json();
-        return decrypted;
+        try {
+            const response = await RequestManager.post(
+                this.decryptionAPI,
+                encryptedData,
+                {
+                    showError: true,
+                    showLoading: true,
+                }
+            );
+            return response;
+        } catch (error) {
+            console.error("Error decrypting data:", error);
+            throw error;
+        }
     }
 
     /**
