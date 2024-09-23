@@ -33,6 +33,8 @@ class RequestManager {
      * @property {boolean} [showToast = false] - Whether to show the toast message.
      * @property {function} [onSuccess] - The function to call on success.
      * @property {function} [onError] - The function to call on error.
+     * 
+     * @returns {any|null} - The response from the request or null if the request failed.
      */
 
     /**
