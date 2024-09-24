@@ -138,7 +138,7 @@ export default class ToastManager {
 
     /**
      * Displays a toast with the specified type and message.
-     * @param {string} type - The type of toast (success, error, etc.).
+     * @param {("success" | "error" | "warning" | "info")} type - The type of toast.
      * @param {string} message - The message to display in the toast.
      * @param {Object} userEvents - User-defined event callbacks.
      * @param {Object} userOptions - User-defined options for the toast.

@@ -1,4 +1,9 @@
 {
+  "resources/css/admin_panel.css": {
+    "file": "assets/admin_panel-B3FLjgoL.css",
+    "src": "resources/css/admin_panel.css",
+    "isEntry": true
+  },
   "resources/css/app.css": {
     "file": "assets/app-l0sNRNKZ.js",
     "name": "app",
@@ -8,6 +13,12 @@
   "resources/css/home.css": {
     "file": "assets/home-B9X1vdsV.css",
     "src": "resources/css/home.css",
+    "isEntry": true
+  },
+  "resources/js/admin_panel.js": {
+    "file": "assets/admin_panel-CqnDRCax.js",
+    "name": "admin_panel",
+    "src": "resources/js/admin_panel.js",
     "isEntry": true
   },
   "resources/js/app.js": {

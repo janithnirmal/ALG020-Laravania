@@ -1,7 +1,7 @@
 /**
  * RequestManager class is responsible for managing all requests made by the application.
  */
-class RequestManager {
+export default class RequestManager {
     /**
      * @typedef {Function} ResponseHandlerProtocol
      * @property {function} handle - The function to handle the response.
