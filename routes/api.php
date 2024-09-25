@@ -17,7 +17,8 @@ Route::post('/logout', [AuthController::class, "logout"])->middleware('auth:sanc
 Route::post('/forgot-password', [AuthController::class, "forgotPassword"]);
 
 // Test routes
-Route::middleware(["auth:sanctum", TestMiddleware::class])->group(function () {
-    Route::get('/test', [TestController::class, "test"]);
-    Route::post('/ok', [TestController::class, "ok"]);
-});
+// Route::middleware(["auth:sanctum", TestMiddleware::class])->group(function () {
+// });
+
+Route::get('/test', [TestController::class, "test"]);
+Route::post('/test', [TestController::class, "test"])->middleware('api');

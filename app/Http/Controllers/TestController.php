@@ -6,22 +6,12 @@ use Illuminate\Http\Request;
 
 class TestController extends Controller
 {
-    //
-    public function test()
+    public function test(Request $request)
     {
-        return response()->json([
-            'message' => 'Test successful',
-        ]);
-    }
-
-    public function ok(Request $request)
-    {
-
-        $isAdmin = $request->attributes->get('isAdmin');
+        $email = $request->input('age');
 
         return response()->json([
-            'message' => 'OK',
-            'isAdmin' => $isAdmin,
+            'status' => 'success',
         ]);
     }
 }
