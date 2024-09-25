@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 
@@ -11,7 +12,7 @@ use Illuminate\Support\Facades\Password;
  * @author Madusha Pravinda <madusha.dev001@gmail.com>
  * @description This controller handles user authentication, including login, registration,
  * and logout functionality. It also manages token-based authentication to ensure secure access for users.
- * @created on 2021-09-29
+ * @created on 2024-09-23
  * Class AuthController
  * @package App\Http\Controllers
  */
