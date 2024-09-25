@@ -4,8 +4,20 @@ use App\Http\Controllers\NoteController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
+// route:core
+// component load
+Route::get('/comp/panel/{name}', function (string $name) {
+    $viewPath = "components.panels.$name";
+    if (view()->exists($viewPath)) {
+        return view($viewPath);
+    } else {
+        return view("components.404");
+    }
+});
+
 
 // routes:pages
+
 
 // client
 Route::get('/', function () {
@@ -27,3 +39,5 @@ Route::get('/about', function () {
 Route::get('/admin', function () {
     return view('pages.admin.home');
 });
+
+

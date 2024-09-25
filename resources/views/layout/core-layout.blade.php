@@ -34,6 +34,7 @@
 
     {{-- custom js and css --}}
     @yield('custom_css_js')
+    
 </head>
 
 <body class="text-center bg-dark text-white">

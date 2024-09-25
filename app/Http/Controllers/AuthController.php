@@ -48,9 +48,6 @@ class AuthController extends Controller
         //Generate a token for the user (Token-based authentication)
         $token = $user->createToken('authTokenUser')->plainTextToken;
 
-        //Store the token in the session for future requests (if needed)
-        session(['auth_token' => $token]);
-
         //Return the token and a success message
         return response()->json([
             'message' => 'User registered successfully',

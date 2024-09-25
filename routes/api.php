@@ -4,6 +4,8 @@ use App\Http\Controllers\AdminAuthController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Models\Admin;
+use App\Http\Controllers\TestController;
+use App\Http\Middleware\TestMiddleware;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +30,9 @@ Route::middleware(['auth:admin-api', 'role:2'])->group(function () {
 Route::middleware(['auth:admin-api', 'role:1'])->group(function () {
     Route::post('/super_admin_dashboard', [AdminController::class, 'dashboard']);
 });
+// Test routes
+// Route::middleware(["auth:sanctum", TestMiddleware::class])->group(function () {
+// });
+
+Route::get('/test', [TestController::class, "test"]);
+Route::post('/test', [TestController::class, "test"])->middleware('api');
